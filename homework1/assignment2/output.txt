@@ -1,0 +1,4 @@
+Parent process done
+Fri Dec  6 19:59:16 UTC 2024
+main.cpp
+output.txt
