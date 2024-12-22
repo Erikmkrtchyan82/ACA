@@ -3,17 +3,6 @@
 #include <time.h>
 #include <pthread.h>
 
-// typedef struct {
-//     int thread_id;
-// } thread_data_t;
-
-
-// void* func(void* arg) {
-//     thread_data_t* data = (thread_data_t*)arg;
-//     printf("Thread %i is running\n", data->thread_id);
-//     return NULL;
-// }
-
 typedef struct {
     int* arr;
     int start;
