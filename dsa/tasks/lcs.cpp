@@ -4,9 +4,10 @@
 #include <random>
 #include <ctime>
 #include <stack>
+#include <sstream>
 
 const int N = 8;
-const int M = 8;
+const int M = 10;
 
 std::string generateRandomString(int count);
 
@@ -14,7 +15,7 @@ std::string str1 = generateRandomString(N);
 std::string str2 = generateRandomString(M);
 
 
-std::array<std::array<int, M>, N> memo;
+std::array<std::array<int, M + 1>, N + 1> memo;
 
 
 std::string generateRandomString(int count) {
@@ -63,19 +64,22 @@ void print() {
         std::cout << "\t" << str2[i] ;
     std::cout << std::endl;
 
+    std::ostringstream s;
+
     for (int i = 0; i < str1.size() + 1; ++i) {
         for (int j = 0; j < str2.size() + 1; ++j) {
             if (j == 0) {
-                if (i == 0)
-                    std::cout << "\t";
-                else
-                    std::cout << str1[i - 1] << "\t";
+                if (i != 0)
+                    std::cout << str1[i - 1];
+                std::cout << "\t";
             }
             std::cout << memo[i][j] << "\t";
         }
         std::cout << std::endl;
     }
     std::cout << std::endl;
+
+    std::cout << s.str() << std::endl;
 }
 
 int lcs(int i, int j) {
@@ -119,11 +123,21 @@ std::string lcs() {
     return res;
 }
 
+float used_fields_count() {
+    int used = 0;
+    for (int i = 1; i < N + 1; ++i) {
+        for (int j = 1; j < M + 1; ++j) {
+            if (memo[i][j] != -1) ++used;
+        }
+    }
+    return float(used) / ((N) * (M)) * 100;
+}
+
 int main() {
     init();
 
     std::cout<< "res: "<< lcs(str1.size(), str2.size())<<", "<< lcs()<< std::endl;
-
     print();
+    std::cout << "used fields: " << used_fields_count() << '%' << std::endl;
     return 0;
 }
