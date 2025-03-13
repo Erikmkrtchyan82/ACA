@@ -1,0 +1,13 @@
+1. pow
+2. max3
+3. modulo
+4. check_if
+5. is_pointer
+6. is_array
+7. is_same
+8. rank
+9. digit_num
+10. add_pointer
+11. remove_extent
+12. decay
+13. type_name_printer
